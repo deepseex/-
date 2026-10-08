@@ -12,7 +12,6 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
-
         body {
             min-height: 100vh;
             background: linear-gradient(135deg, #fce7f3 0%, #e0efff 50%, #fce7f3 100%);
@@ -20,54 +19,33 @@
             animation: gradientFlow 18s ease infinite;
             padding: 30px 0;
         }
-
         @keyframes gradientFlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         @keyframes pulseWarning {
             0%, 100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.6); }
             50% { box-shadow: 0 0 28px 12px rgba(236, 72, 153, 0.4); }
         }
-
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeOutUp {
-            from {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateY(-15px);
-            }
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-15px); }
         }
-
         @keyframes rippleSpread {
-            0% {
-                transform: scale(0);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(2.5);
-                opacity: 0;
-            }
+            0% { transform: scale(0); opacity: 0.5; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+        @keyframes floatUp {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        .warning {
-            animation: pulseWarning 1s ease-in-out 3;
-        }
+        .warning { animation: pulseWarning 1s ease-in-out 3; }
 
         .quiz-container {
             max-width: 800px;
@@ -75,7 +53,6 @@
             padding: 0 20px;
             min-height: 320px;
         }
-
         .question-index {
             text-align: center;
             font-size: 14px;
@@ -83,32 +60,28 @@
             margin-bottom: 16px;
             animation: fadeInUp 0.4s ease;
         }
-
         .question {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 18px;
-            padding: 32px 24px;
-            box-shadow: 0 4px 20px rgba(100, 100, 150, 0.08);
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 36px 28px;
+            box-shadow: 
+                0 8px 32px rgba(100, 100, 150, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
             animation: fadeInUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
         }
-
-        .question.leave {
-            animation: fadeOutUp 0.25s ease forwards;
-        }
-
+        .question.leave { animation: fadeOutUp 0.25s ease forwards; }
         .question-title {
             font-size: 18px;
             font-weight: 500;
             color: #2a3342;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.7;
         }
-
         .options {
             display: flex;
             justify-content: center;
@@ -116,7 +89,6 @@
             gap: 14px;
             flex-wrap: wrap;
         }
-
         .option-btn {
             border: none;
             border-radius: 50%;
@@ -127,7 +99,7 @@
             justify-content: center;
             text-align: center;
             padding: 6px;
-            line-height: 1.25;
+            line-height: 1.3;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             user-select: none;
             position: relative;
@@ -135,13 +107,11 @@
             opacity: 0;
             animation: fadeInUp 0.4s ease forwards;
         }
-
         .option-btn:nth-child(1) { animation-delay: 0.1s; }
         .option-btn:nth-child(2) { animation-delay: 0.18s; }
         .option-btn:nth-child(3) { animation-delay: 0.26s; }
         .option-btn:nth-child(4) { animation-delay: 0.34s; }
         .option-btn:nth-child(5) { animation-delay: 0.42s; }
-
         .option-btn::after {
             content: '';
             position: absolute;
@@ -154,35 +124,25 @@
             transform: translate(-50%, -50%) scale(0);
             pointer-events: none;
         }
-
-        .option-btn:active::after {
-            animation: rippleSpread 0.5s ease-out;
-        }
-
-        .option-btn:hover {
-            transform: scale(1.08);
-        }
-
-        .option-btn:active {
-            transform: scale(0.95);
-        }
-
+        .option-btn:active::after { animation: rippleSpread 0.5s ease-out; }
+        .option-btn:hover { transform: scale(1.08); }
+        .option-btn:active { transform: scale(0.95); }
         .option-btn.selected {
             transform: scale(1.3);
             z-index: 2;
-            filter: brightness(1.15) saturate(1.25);
+            filter: brightness(1.18) saturate(1.3);
         }
 
-        .opt-1 { width: 72px; height: 72px; background-color: #9333ea; font-size: 11px; }
-        .opt-1.selected { box-shadow: 0 0 0 4px rgba(255,255,255,0.9), 0 0 35px 12px rgba(147, 51, 234, 0.6); }
-        .opt-2 { width: 62px; height: 62px; background-color: #ec4899; font-size: 10px; }
-        .opt-2.selected { box-shadow: 0 0 0 4px rgba(255,255,255,0.9), 0 0 35px 12px rgba(236, 72, 153, 0.6); }
-        .opt-3 { width: 52px; height: 52px; background-color: #9ca3af; font-size: 10px; }
-        .opt-3.selected { box-shadow: 0 0 0 4px rgba(255,255,255,0.9), 0 0 35px 12px rgba(156, 163, 175, 0.6); }
-        .opt-4 { width: 62px; height: 62px; background-color: #60a5fa; font-size: 10px; }
-        .opt-4.selected { box-shadow: 0 0 0 4px rgba(255,255,255,0.9), 0 0 35px 12px rgba(96, 165, 250, 0.6); }
-        .opt-5 { width: 72px; height: 72px; background-color: #1d4ed8; font-size: 11px; }
-        .opt-5.selected { box-shadow: 0 0 0 4px rgba(255,255,255,0.9), 0 0 35px 12px rgba(29, 78, 216, 0.6); }
+        .opt-1 { width: 76px; height: 76px; background-color: #9333ea; font-size: 11px; }
+        .opt-1.selected { box-shadow: 0 0 0 4px rgba(255,255,255,0.95), 0 0 40px 14px rgba(147, 51, 234, 0.65); }
+        .opt-2 { width: 66px; height: 66px; background-color: #ec4899; font-size: 10px; }
+        .opt-2.selected { box-shadow: 0 0 0 4px rgba(255,255,255,0.95), 0 0 40px 14px rgba(236, 72, 153, 0.65); }
+        .opt-3 { width: 56px; height: 56px; background-color: #9ca3af; font-size: 10px; }
+        .opt-3.selected { box-shadow: 0 0 0 4px rgba(255,255,255,0.95), 0 0 40px 14px rgba(156, 163, 175, 0.65); }
+        .opt-4 { width: 66px; height: 66px; background-color: #60a5fa; font-size: 10px; }
+        .opt-4.selected { box-shadow: 0 0 0 4px rgba(255,255,255,0.95), 0 0 40px 14px rgba(96, 165, 250, 0.65); }
+        .opt-5 { width: 76px; height: 76px; background-color: #1d4ed8; font-size: 11px; }
+        .opt-5.selected { box-shadow: 0 0 0 4px rgba(255,255,255,0.95), 0 0 40px 14px rgba(29, 78, 216, 0.65); }
 
         .nav-buttons {
             max-width: 800px;
@@ -192,41 +152,33 @@
             justify-content: space-between;
             gap: 16px;
         }
-
         .nav-btn {
             padding: 12px 26px;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(12px);
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.85);
             color: #2a3342;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
             flex: 1;
+            font-weight: 500;
         }
-
-        .nav-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        .nav-btn:active:not(:disabled) {
-            transform: scale(0.96);
-        }
-
-        .nav-btn.next-btn {
+        .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .nav-btn:active:not(:disabled) { transform: scale(0.96); }
+        .nav-btn.primary-btn {
             background: linear-gradient(135deg, #ec4899, #3b82f6);
             color: #ffffff;
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+            box-shadow: 0 4px 18px rgba(236, 72, 153, 0.35);
         }
-
-        .nav-btn.next-btn:hover:not(:disabled) {
+        .nav-btn.primary-btn:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+            box-shadow: 0 6px 24px rgba(236, 72, 153, 0.45);
         }
 
+        /* ========== 结果页面 ========== */
         .result-container {
             max-width: 800px;
             margin: 0 auto;
@@ -234,44 +186,54 @@
             text-align: center;
             display: none;
         }
-
         .result-title {
-            font-size: 34px;
+            font-size: 36px;
             font-weight: 700;
             background: linear-gradient(135deg, #ec4899, #1d4ed8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             animation: fadeInUp 0.7s ease;
         }
-
         .result-subtitle {
-            font-size: 16px;
-            color: #6b7280;
-            margin-bottom: 20px;
+            font-size: 15px;
+            color: #9ca3af;
+            margin-bottom: 30px;
             animation: fadeInUp 0.7s ease 0.05s both;
         }
-
-        /* 前三名金字塔布局 */
-        .top-tags-pyramid {
-            position: relative;
-            height: 260px;
-            margin: 20px 0 50px;
-            animation: fadeInUp 0.8s ease 0.1s both;
+        .result-section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 16px;
+            text-align: left;
+            padding-left: 12px;
+            border-left: 3px solid #ec4899;
         }
 
+        /* 金字塔布局 */
+        .top-tags-pyramid {
+            position: relative;
+            height: 280px;
+            margin: 10px 0 50px;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
         .tag-rank-item {
             position: absolute;
             cursor: pointer;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 10px 16px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
         }
-
         .tag-rank-item:hover {
             transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
-
         .tag-rank-1 {
             top: 0;
             left: 50%;
@@ -279,44 +241,56 @@
             font-size: 28px;
             font-weight: 700;
             color: #ec4899;
+            min-width: 160px;
         }
-
-        .tag-rank-1:hover {
-            transform: translateX(-50%) scale(1.08);
-        }
-
+        .tag-rank-1:hover { transform: translateX(-50%) scale(1.08); }
         .tag-rank-2 {
-            top: 100px;
-            left: 12%;
+            top: 110px;
+            left: 8%;
             font-size: 22px;
             font-weight: 600;
             color: #9333ea;
+            min-width: 130px;
         }
-
         .tag-rank-3 {
-            top: 120px;
-            right: 12%;
+            top: 130px;
+            right: 8%;
             font-size: 20px;
             font-weight: 600;
             color: #3b82f6;
+            min-width: 120px;
         }
-
         .tag-rank-badge {
             font-size: 12px;
             color: #9ca3af;
-            margin-top: 6px;
+            margin-top: 4px;
             font-weight: normal;
         }
-
-        .charts-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 30px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.9s ease 0.3s both;
+        .tag-rank-score {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 2px;
+            font-weight: 500;
         }
 
+        /* 五维柱状图 */
+        .charts-wrapper {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 30px 24px;
+            box-shadow: 0 4px 20px rgba(100,100,150,0.06);
+            margin-bottom: 40px;
+        }
+        .charts-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.9s ease 0.3s both;
+            padding-top: 20px;
+        }
         .chart-item {
             display: flex;
             flex-direction: column;
@@ -324,39 +298,131 @@
             gap: 12px;
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
+            flex: 1;
+            min-width: 50px;
+            max-width: 70px;
         }
-
         .chart-item:nth-child(1) { animation-delay: 0.4s; }
         .chart-item:nth-child(2) { animation-delay: 0.5s; }
         .chart-item:nth-child(3) { animation-delay: 0.6s; }
         .chart-item:nth-child(4) { animation-delay: 0.7s; }
         .chart-item:nth-child(5) { animation-delay: 0.8s; }
-
         .bar-chart {
-            width: 50px;
-            height: 160px;
-            background-color: #e5e7eb;
-            border-radius: 12px;
+            width: 100%;
+            height: 180px;
+            background-color: #f3f4f6;
+            border-radius: 10px;
             overflow: hidden;
             display: flex;
             align-items: flex-end;
             box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);
+            position: relative;
         }
-
         .bar-fill {
             width: 100%;
             height: 0;
-            border-radius: 12px 12px 0 0;
+            border-radius: 10px 10px 0 0;
             transition: height 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
         }
-
+        .bar-fill::after {
+            content: attr(data-percent);
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: 600;
+            color: #374151;
+            opacity: 0;
+            animation: floatUp 0.3s ease forwards;
+            animation-delay: 1.2s;
+        }
         .chart-label {
             font-size: 14px;
             color: #374151;
             font-weight: 500;
         }
 
-        /* 详情弹窗 */
+        /* 结果按钮组 */
+        .result-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ========== 历史记录页面 ========== */
+        .history-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: none;
+        }
+        .history-title {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(135deg, #ec4899, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.7s ease;
+        }
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+            min-height: 200px;
+        }
+        .history-item {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 18px 20px;
+            box-shadow: 0 2px 12px rgba(100, 100, 150, 0.06);
+            animation: fadeInUp 0.4s ease forwards;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-left: 4px solid #ec4899;
+        }
+        .history-item-content { flex: 1; }
+        .history-time {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-bottom: 6px;
+        }
+        .history-attr {
+            font-size: 17px;
+            font-weight: 600;
+            color: #ec4899;
+            margin-bottom: 4px;
+        }
+        .history-tags {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+        .history-empty {
+            text-align: center;
+            color: #9ca3af;
+            padding: 80px 0;
+            font-size: 15px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 16px;
+            backdrop-filter: blur(8px);
+        }
+        .history-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* ========== 弹窗 ========== */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -368,17 +434,15 @@
             z-index: 100;
             padding: 20px;
         }
-
         .modal-box {
-            background: rgba(255,255,255,0.96);
-            border-radius: 18px;
-            padding: 32px 24px;
-            max-width: 500px;
+            background: rgba(255,255,255,0.98);
+            border-radius: 20px;
+            padding: 36px 28px;
+            max-width: 520px;
             width: 100%;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
             animation: fadeInUp 0.4s ease;
         }
-
         .modal-title {
             font-size: 24px;
             font-weight: 700;
@@ -386,68 +450,91 @@
             margin-bottom: 16px;
             text-align: center;
         }
-
         .modal-desc {
             font-size: 16px;
-            line-height: 1.7;
+            line-height: 1.8;
             color: #2a3342;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             text-align: justify;
         }
-
         .modal-close {
             display: block;
             margin: 0 auto;
-            padding: 10px 30px;
+            padding: 12px 36px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             background: linear-gradient(135deg, #ec4899, #3b82f6);
             color: white;
             font-size: 15px;
             cursor: pointer;
             transition: transform 0.3s ease;
+            font-weight: 500;
         }
-
-        .modal-close:hover {
-            transform: translateY(-2px);
-        }
+        .modal-close:hover { transform: translateY(-2px); }
 
         @media (max-width: 600px) {
-            body {
-                padding: 20px 0;
-            }
+            body { padding: 20px 0; }
             .question { padding: 24px 18px; }
             .question-title { font-size: 16px; margin-bottom: 24px; }
             .options { gap: 8px; }
-            .opt-1 { width: 56px; height: 56px; font-size: 10px; }
-            .opt-2 { width: 48px; height: 48px; font-size: 9px; }
-            .opt-3 { width: 42px; height: 42px; font-size: 9px; }
-            .opt-4 { width: 48px; height: 48px; font-size: 9px; }
-            .opt-5 { width: 56px; height: 56px; font-size: 10px; }
+            .opt-1 { width: 58px; height: 58px; font-size: 10px; }
+            .opt-2 { width: 50px; height: 50px; font-size: 9px; }
+            .opt-3 { width: 44px; height: 44px; font-size: 9px; }
+            .opt-4 { width: 50px; height: 50px; font-size: 9px; }
+            .opt-5 { width: 58px; height: 58px; font-size: 10px; }
             .result-title { font-size: 28px; }
-            .bar-chart { width: 40px; height: 130px; }
-            .charts-container { gap: 20px; }
+            .bar-chart { height: 140px; }
+            .charts-wrapper { padding: 20px 16px; }
             .nav-btn { padding: 10px 16px; font-size: 15px; }
             .nav-buttons { padding: 0 12px; }
-            .tag-rank-1 { font-size: 24px; }
-            .tag-rank-2 { font-size: 18px; left: 8%; }
-            .tag-rank-3 { font-size: 17px; right: 8%; }
-            .top-tags-pyramid { height: 220px; }
+            .tag-rank-1 { font-size: 22px; min-width: 120px; }
+            .tag-rank-2 { font-size: 17px; left: 5%; min-width: 100px; }
+            .tag-rank-3 { font-size: 16px; right: 5%; min-width: 100px; }
+            .top-tags-pyramid { height: 240px; }
+            .result-buttons { flex-direction: column; }
+            .history-item { flex-direction: column; align-items: flex-start; gap: 8px; }
         }
     </style>
 </head>
 <body>
+    <!-- 答题页面 -->
     <div class="quiz-container" id="quizContainer">
         <div class="question-index" id="questionIndex">第 1 题 / 共 50 题</div>
         <div class="question" id="questionBox"></div>
     </div>
-
-    <div class="nav-buttons">
+    <div class="nav-buttons" id="quizNav">
         <button class="nav-btn prev-btn" id="prevBtn">上一题</button>
-        <button class="nav-btn next-btn" id="nextBtn">下一题</button>
+        <button class="nav-btn primary-btn next-btn" id="nextBtn">下一题</button>
     </div>
 
-    <div class="result-container" id="resultContainer"></div>
+    <!-- 结果页面 -->
+    <div class="result-container" id="resultContainer">
+        <h1 class="result-title" id="resultTitle"></h1>
+        <p class="result-subtitle">点击标签查看详细解析</p>
+
+        <div class="result-section-title">核心角色标签</div>
+        <div class="top-tags-pyramid" id="pyramidBox"></div>
+
+        <div class="charts-wrapper">
+            <div class="result-section-title" style="margin-bottom: 0;">五维属性分布</div>
+            <div class="charts-container" id="chartsBox"></div>
+        </div>
+
+        <div class="result-buttons">
+            <button class="nav-btn" onclick="restartQuiz()">重新答题</button>
+            <button class="nav-btn primary-btn" onclick="showHistory()">查看历史记录</button>
+        </div>
+    </div>
+
+    <!-- 历史记录页面 -->
+    <div class="history-container" id="historyContainer">
+        <h2 class="history-title">答题记录</h2>
+        <div class="history-list" id="historyList"></div>
+        <div class="history-buttons">
+            <button class="nav-btn" onclick="backToResult()">返回结果</button>
+            <button class="nav-btn primary-btn" onclick="clearHistory()">清空记录</button>
+        </div>
+    </div>
 
     <!-- 标签详情弹窗 -->
     <div class="modal-overlay" id="modalOverlay">
@@ -459,168 +546,149 @@
     </div>
 
     <script>
-        // ========== 数据配置 ==========
-        const currentIndex = { value: 0 };
-        const scores = new Array(50).fill(null);
-        let isSwitching = false;
+        // ================================================================
+        // 【配置区域】
+        // ================================================================
 
-        // 题目原始索引随机排序（仅改变出场顺序，内部编号不变）
-        function shuffleArray(arr) {
-            const array = [...arr];
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-        const shuffleOrder = shuffleArray([...Array(50).keys()]);
+        // 题目总数
+        const TOTAL_QUESTIONS = 50;
 
-        // 需要调整分数的题目（0基原始索引）：原第2、3、35、43、45、46、47题
+        // 反向计分题（原始题号0基）
+        // 公式：反转后得分 = 4 - 原始分
+        const REVERSE_INDEXES = [4, 11, 19, 35, 44, 46];
+
+        // 加权调整题（原始题号0基）
+        // 公式：调整后得分 = 得分 + (得分 - 2) * 1.5
         const ADJUST_INDEXES = [1, 2, 34, 42, 44, 45, 46];
 
         // 属性对应标签加分规则
         const ATTR_TAG_BONUS = {
-            sado: {
-                '行刑官': 5,
-                '训奴师': 4,
-                '宠物主': 2
-            },
-            dom: {
-                '行刑官': 2,
-                '训奴师': 4,
-                '宠物主': 4
-            },
-            switch: {
-                '宠物主': 2,
-                '开发者': 4,
-                '寻契友': 5,
-                '自调者': 3,
-                '稚顽童': 2
-            },
-            sub: {
-                '稚顽童': 5,
-                '小宠物': 5,
-                '自调者': 2,
-                '物化者': 2
-            },
-            maso: {
-                '负罪徒': 4,
-                '物化者': 3
-            }
+            sado: { '行刑官': 5, '训奴师': 4, '宠物主': 2 },
+            dom: { '行刑官': 2, '训奴师': 4, '宠物主': 4 },
+            switch: { '宠物主': 2, '开发者': 4, '寻契友': 5, '自调者': 3, '稚顽童': 2 },
+            sub: { '稚顽童': 5, '小宠物': 5, '自调者': 2, '物化者': 2 },
+            maso: { '负罪徒': 4, '物化者': 3 }
         };
 
-        // 题目数组，下标对应原始题号（0基），代码内注释标注原题号
+        // ----------------------------------------------------------------
+        // 题目列表（0基索引对应原始题号）
+        // 标注【反向题】的为反向计分题，替换了原重复/相似题目
+        // ----------------------------------------------------------------
         const questions = [
-            // 原第1题
+            // 01
             "在和性爱对象进行性行为时，我享受欺负ta的感觉。",
-            // 原第2题
+            // 02
             "在性爱对象身上倾泻暴力，使我感到兴奋。",
-            // 原第3题
+            // 03
             "我希望可以伤害性爱对象，在ta身上留下我的痕迹（伤口或者淤青）。",
-            // 原第4题
-            "想到性爱对象焦急和痛苦的样子，让感到兴奋。",
-            // 原第5题
-            "我希望可以伤害性爱对象，在ta身上留下我的痕迹（伤口或者淤青）。（好好想想再选择一次）",
-            // 原第6题
-            "我想要束缚我的伴侣，这让我感到兴奋",
-            // 原第7题
+            // 04
+            "想到性爱对象焦急和痛苦的样子，让我感到兴奋。",
+            // 05 【反向题】替换原重复题
+            "我无法接受在亲密互动中给对方留下任何永久性的痕迹。",
+            // 06
+            "我想要束缚我的伴侣，这让我感到兴奋。",
+            // 07
             "我喜欢羞辱我的性爱对象，贬低ta会让我兴奋。",
-            // 原第8题
+            // 08
             "我希望我的伴侣把服务我和讨好我作为人生目标。",
-            // 原第9题
+            // 09
             "我常常幻想可以骑/坐在伴侣身上。",
-            // 原第10题
+            // 10
             "我常常幻想把伴侣牵上绳子当做宠物一样对待。",
-            // 原第11题
-            "一想到伴侣的行动可以听从我的指挥行动，我就觉得兴奋。",
-            // 原第12题
-            "我希望伴侣的行动可以听从我的命令，当ta完成我的要求时，我会觉得兴奋。",
-            // 原第13题
+            // 11
+            "一想到伴侣的行动可以听从我的指挥，我就觉得兴奋。",
+            // 12 【反向题】替换原重复题
+            "我很反感伴侣对我发号施令、指挥我的一举一动。",
+            // 13
             "我不喜欢惊喜，一切都朝着我的预想发展会让我感到开心。",
-            // 原第14题
+            // 14
             "如果伴侣会因为我的照顾变得无能，我会感到兴奋和满足。",
-            // 原第15题
+            // 15
             "我希望可以指导我的伴侣的一切行为，不止局限在性爱之中。",
-            // 原第16题
+            // 16
             "我常常觉得我的伴侣犯错的时候非常可爱。",
-            // 原第17题
+            // 17
             "我认为可以随时惩罚（可以是辱骂）我的伴侣让我感到开心。",
-            // 原第18题
+            // 18
             "我常常幻想设计各种情趣玩法，并希望可以在和伴侣性爱时在ta身上实践这些调教。",
-            // 原第19题
+            // 19
             "我喜欢并且擅长照顾伴侣的情绪，成功安抚伴侣情绪让我有一种成就感。",
-            // 原第20题
-            "我常常觉得我的伴侣像是个小孩子或者小动物，这让我想要照顾ta。",
-            // 原第21题
+            // 20 【反向题】替换原重复题
+            "我无法接受伴侣在相处中表现得像幼稚的小孩或动物。",
+            // 21
             "我有时想要臣服于伴侣，有时又想要被支配，我都想试试。",
-            // 原第22题
-            "我非常喜欢和伴侣讨论情趣玩法，会希望和ta体验各种不同的权力关系，比如互相做对方的主人之类的。",
-            // 原第23题
-            "我希望有一个可以和我尝试各种玩法的伴侣，无论ta要求我做上位还是下位，我都会接受",
-            // 原第24题
-            "在性爱中，只要是我的爱人，无论ta想和我尝试什么玩法，让我做上位下位我都能轻松接受。",
-            // 原第25题
-            "我想要开发和伴侣的情趣玩法，让让因为我觉得这样可以加固我们的感情，不过我最好还是做掌控着。",
-            // 原第26题
-            "我不满足于固定的性爱模式，想要在自己身上挑战各种新奇的玩法，比如反过来做自己原本的上位的主人或是服侍我原本的下位。",
-            // 原第27题
-            "我希望向伴侣分享我的各种癖好，好让ta调教我，但是偶尔有的时候我也会想要调教ta",
-            // 原第28题
+            // 22
+            "我非常喜欢和伴侣讨论情趣玩法，会希望和ta体验各种不同的权力关系。",
+            // 23
+            "我希望有一个可以和我尝试各种玩法的伴侣，无论ta要求我做上位还是下位，我都会接受。",
+            // 24
+            "在性爱中，只要是我的爱人，无论ta想和我尝试什么玩法，我都能轻松接受。",
+            // 25
+            "我想要开发和伴侣的情趣玩法，因为我觉得这样可以加固我们的感情。",
+            // 26
+            "我不满足于固定的性爱模式，想要在自己身上挑战各种新奇的玩法。",
+            // 27
+            "我希望向伴侣分享我的各种癖好，好让ta调教我，但是偶尔我也会想要调教ta。",
+            // 28
             "在做下位时，我偶尔会想要调皮捣蛋，故意让我的上位感到不爽。",
-            // 原第29题
+            // 29
             "我希望在特定的时候彻底放下尊严臣服于我的性伴侣，不过ta必须按照我要求的流程走。",
-            // 原第30题
-            "当我的伴侣不断提出新奇的情趣点子并且想要和我实践时，无论这个点子里我是处于下位还是上位，我都想满足ta。",
-            // 原第31题
+            // 30
+            "当我的伴侣不断提出新奇的情趣点子并且想要和我实践时，无论我是下位还是上位，我都想满足ta。",
+            // 31
             "我喜欢被羞辱，被侮辱和欺负让我感到性兴奋。",
-            // 原第32题
-            "我希望我的性伴侣可以看到我的一切缺点，我想要向他毫不保留的展示我的不足。",
-            // 原第33题
+            // 32
+            "我希望我的性伴侣可以看到我的一切缺点，我想要向ta毫不保留地展示我的不足。",
+            // 33
             "我希望我做错了的时候可以被惩罚，这让我感到安心。",
-            // 原第34题
+            // 34
             "我总是感到无力，自己没什么掌控局面的能力。",
-            // 原第35题
+            // 35
             "被当做一个不被重视的随取随用的器物让我感到兴奋和安心。",
-            // 原第36题
-            "我总觉得自己配不上现在的位置，害怕一个错误就被打回原型。",
-            // 原第37题
+            // 36 【反向题】替换原重复题
+            "我觉得自己完全配得上目前在关系里的位置。",
+            // 37
             "我感觉维持一个人类的体面让我感觉很累，我会想要退化为动物。",
-            // 原第38题
+            // 38
             "被要求发出像小动物一样的叫声会让我感到性兴奋。",
-            // 原第39题
+            // 39
             "我感觉做一个大人好累啊，好想回到小时候，我不想承担责任。",
-            // 原第40题
-            "我不想自己做决定，我做不好这些",
-            // 原第41题
+            // 40
+            "我不想自己做决定，我做不好这些。",
+            // 41
             "性爱时，被要求像动物一样行动让我感到兴奋。",
-            // 原第42题
+            // 42
             "性爱时，被限制行动让我感到兴奋。",
-            // 原第43题
-            "我喜欢作为一个抹布，清理性伴侣的足部，甚至是其他部位。",
-            // 原第44题
-            "我喜爱疼痛，被性伴侣殴打欺负让我感到兴奋",
-            // 原第45题
-            "当性爱对象露出鄙视或者嫌弃我的表情时，我会感到兴奋",
-            // 原第46题
+            // 43
+            "我喜欢作为抹布，清理性伴侣的足部，甚至是其他部位。",
+            // 44
+            "我喜爱疼痛，被性伴侣殴打欺负让我感到兴奋。",
+            // 45 【反向题】替换原重复题
+            "伴侣露出鄙视或嫌弃的表情会让我感到非常不适。",
+            // 46
             "发生性关系时我想要被为难甚至伤害，让性伴侣看到我哭泣或难堪的样子，让我感到兴奋。",
-            // 原第47题
-            "我想要性伴侣殴打或者用别的方法刺激我的性器官，让它们感到疼痛",
-            // 原第48题
-            "当我被欺负，殴打的时候，我反而会觉得安心。",
-            // 原第49题
+            // 47 【反向题】替换原重复题
+            "我完全无法接受在亲密互动中器官感受到疼痛。",
+            // 48
+            "当我被欺负、殴打的时候，我反而会觉得安心。",
+            // 49
             "让性对象支配我的身体，我完全无法反抗，我会感到兴奋。",
-            // 原第50题
+            // 50
             "我常常担心性爱对象会对我的性能力感到不满。"
         ];
 
+        // ----------------------------------------------------------------
+        // 五级选项（颗粒度优化：符合度分级，中立选项表述更精准）
+        // ----------------------------------------------------------------
         const options = [
-            { text: '这完全不是我', score: 0, class: 'opt-1' },
-            { text: '这似乎不是我', score: 1, class: 'opt-2' },
-            { text: '我不知道', score: 2, class: 'opt-3' },
-            { text: '这好像是我', score: 3, class: 'opt-4' },
-            { text: '这完全就是我', score: 4, class: 'opt-5' }
+            { text: '完全不符合', score: 0, class: 'opt-1' },
+            { text: '不太符合', score: 1, class: 'opt-2' },
+            { text: '一般/不确定', score: 2, class: 'opt-3' },
+            { text: '比较符合', score: 3, class: 'opt-4' },
+            { text: '完全符合', score: 4, class: 'opt-5' }
         ];
 
+        // 属性分组
         const attributes = [
             { name: 'sado', start: 1, end: 10 },
             { name: 'dom', start: 11, end: 20 },
@@ -629,6 +697,7 @@
             { name: 'maso', start: 41, end: 50 }
         ];
 
+        // 标签列表
         const tags = [
             {
                 id: '行刑官',
@@ -687,32 +756,54 @@
             '#FF7CC3', '#FF62B7', '#FF48AB', '#FF2E9F', '#FF1493'
         ];
 
-        // ========== DOM 元素 ==========
+        // ================================================================
+        // 【核心计算逻辑】
+        // ================================================================
+
+        const currentIndex = { value: 0 };
+        const scores = new Array(TOTAL_QUESTIONS).fill(null);
+        let isSwitching = false;
+
+        // 随机打乱出场顺序
+        function shuffleArray(arr) {
+            const array = [...arr];
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+        let shuffleOrder = shuffleArray([...Array(TOTAL_QUESTIONS).keys()]);
+
+        // 分数预处理：反向计分 + 加权调整
+        function getFinalScores() {
+            return scores.map((s, i) => {
+                let score = s;
+                // 第一步：反向题反转
+                if (REVERSE_INDEXES.includes(i)) {
+                    score = 4 - score;
+                }
+                // 第二步：加权调整
+                if (ADJUST_INDEXES.includes(i)) {
+                    score = score + (score - 2) * 1.5;
+                }
+                return score;
+            });
+        }
+
+        // ================================================================
+        // 【工具函数】
+        // ================================================================
         const questionBox = document.getElementById('questionBox');
         const questionIndex = document.getElementById('questionIndex');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const quizContainer = document.getElementById('quizContainer');
         const resultContainer = document.getElementById('resultContainer');
+        const historyContainer = document.getElementById('historyContainer');
         const modalOverlay = document.getElementById('modalOverlay');
         const modalTitle = document.getElementById('modalTitle');
         const modalDesc = document.getElementById('modalDesc');
-
-        // ========== 工具函数 ==========
-        // 分数调整公式：xn + (xn - 2) * 1.5
-        function adjustScore(x) {
-            return x + (x - 2) * 1.5;
-        }
-
-        // 生成最终得分数组（按原始题号）
-        function getFinalScores() {
-            return scores.map((s, i) => {
-                if (ADJUST_INDEXES.includes(i)) {
-                    return adjustScore(s);
-                }
-                return s;
-            });
-        }
 
         function getColor(percent) {
             const idx = Math.min(Math.floor(percent / 10), 9);
@@ -730,9 +821,11 @@
         }
 
         function createBar(percent, color) {
-            const dark = darkenColor(color, 12);
+            const dark = darkenColor(color, 15);
             const gradient = `linear-gradient(to top, ${color}, ${dark})`;
-            return `<div class="bar-chart"><div class="bar-fill" style="background: ${gradient};"></div></div>`;
+            return `<div class="bar-chart">
+                <div class="bar-fill" style="background: ${gradient};" data-percent="${percent.toFixed(0)}%"></div>
+            </div>`;
         }
 
         // 弹窗控制
@@ -741,26 +834,97 @@
             modalDesc.textContent = tag.desc;
             modalOverlay.style.display = 'flex';
         }
-
         function closeModal() {
             modalOverlay.style.display = 'none';
         }
-
-        // 点击遮罩关闭弹窗
         modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                closeModal();
-            }
+            if (e.target === modalOverlay) closeModal();
         });
 
-        // ========== 渲染函数 ==========
+        // ================================================================
+        // 【历史记录功能】
+        // ================================================================
+        function saveHistory(topAttr, top3Tags) {
+            const record = {
+                time: new Date().toLocaleString('zh-CN'),
+                attr: topAttr.name,
+                tags: top3Tags.map(t => t.id)
+            };
+            const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+            history.unshift(record);
+            if (history.length > 20) history.pop();
+            localStorage.setItem('quizHistory', JSON.stringify(history));
+        }
+
+        function renderHistoryList() {
+            const list = document.getElementById('historyList');
+            const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+            
+            if (history.length === 0) {
+                list.innerHTML = '<div class="history-empty">暂无答题记录</div>';
+                return;
+            }
+
+            let html = '';
+            history.forEach((item, i) => {
+                html += `<div class="history-item" style="animation-delay: ${i * 0.05}s">
+                    <div class="history-item-content">
+                        <div class="history-time">${item.time}</div>
+                        <div class="history-attr">主导属性：${item.attr}</div>
+                        <div class="history-tags">前三标签：${item.tags.join('、')}</div>
+                    </div>
+                </div>`;
+            });
+            list.innerHTML = html;
+        }
+
+        function showHistory() {
+            resultContainer.style.display = 'none';
+            historyContainer.style.display = 'block';
+            renderHistoryList();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function backToResult() {
+            historyContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function clearHistory() {
+            if (confirm('确定要清空所有答题记录吗？')) {
+                localStorage.removeItem('quizHistory');
+                renderHistoryList();
+            }
+        }
+
+        // ================================================================
+        // 【重新答题】
+        // ================================================================
+        function restartQuiz() {
+            scores.fill(null);
+            currentIndex.value = 0;
+            shuffleOrder = shuffleArray([...Array(TOTAL_QUESTIONS).keys()]);
+            
+            resultContainer.style.display = 'none';
+            historyContainer.style.display = 'none';
+            quizContainer.style.display = 'block';
+            document.getElementById('quizNav').style.display = 'flex';
+            
+            renderQuestion();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ================================================================
+        // 【渲染逻辑】
+        // ================================================================
         function renderQuestion() {
             const idx = currentIndex.value;
             const rawIdx = shuffleOrder[idx];
             const q = questions[rawIdx];
             const currentScore = scores[rawIdx];
 
-            questionIndex.textContent = `第 ${idx + 1} 题 / 共 50 题`;
+            questionIndex.textContent = `第 ${idx + 1} 题 / 共 ${TOTAL_QUESTIONS} 题`;
 
             let html = `<div class="question-title">${q}</div><div class="options">`;
             options.forEach((opt) => {
@@ -771,7 +935,6 @@
 
             questionBox.innerHTML = html;
 
-            // 绑定选项点击事件
             questionBox.querySelectorAll('.option-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const score = parseInt(btn.dataset.score);
@@ -782,13 +945,12 @@
             });
 
             prevBtn.disabled = idx === 0;
-            nextBtn.textContent = idx === questions.length - 1 ? '提交答案' : '下一题';
+            nextBtn.textContent = idx === TOTAL_QUESTIONS - 1 ? '提交答案' : '下一题';
         }
 
         function switchQuestion(direction) {
             if (isSwitching) return;
             isSwitching = true;
-
             questionBox.classList.add('leave');
 
             setTimeout(() => {
@@ -810,7 +972,7 @@
         function showResult() {
             const finalScores = getFinalScores();
 
-            // 1. 计算五大属性得分
+            // 计算五大属性
             attributes.forEach(attr => {
                 let sum = 0;
                 for (let i = attr.start - 1; i < attr.end; i++) {
@@ -821,7 +983,7 @@
                 attr.color = getColor(attr.percent);
             });
 
-            // 2. 计算标签基础得分
+            // 计算标签基础分
             tags.forEach(tag => {
                 let sum = 0;
                 tag.questions.forEach(q => {
@@ -830,10 +992,10 @@
                 tag.score = sum;
             });
 
-            // 3. 找出最高属性
+            // 最高属性
             const topAttr = attributes.reduce((a, b) => a.score > b.score ? a : b);
 
-            // 4. 根据最高属性给标签加分
+            // 属性对应标签加分
             const bonusMap = ATTR_TAG_BONUS[topAttr.name];
             if (bonusMap) {
                 tags.forEach(tag => {
@@ -843,40 +1005,40 @@
                 });
             }
 
-            // 5. 按得分排序标签，取前三
+            // 排序取前三
             const sortedTags = [...tags].sort((a, b) => b.score - a.score);
             const top3 = sortedTags.slice(0, 3);
 
-            // 6. 渲染结果页面
-            let html = '';
-            html += `<h1 class="result-title">测试结果：${topAttr.name}</h1>`;
-            html += `<p class="result-subtitle">点击标签查看详细解析</p>`;
+            // 保存历史
+            saveHistory(topAttr, top3);
 
-            // 金字塔前三名
-            html += '<div class="top-tags-pyramid">';
-            html += `<div class="tag-rank-item tag-rank-1" data-tag-id="${top3[0].id}">
-                        ${top3[0].id}
-                        <div class="tag-rank-badge">TOP 1</div>
-                     </div>`;
-            html += `<div class="tag-rank-item tag-rank-2" data-tag-id="${top3[1].id}">
-                        ${top3[1].id}
-                        <div class="tag-rank-badge">TOP 2</div>
-                     </div>`;
-            html += `<div class="tag-rank-item tag-rank-3" data-tag-id="${top3[2].id}">
-                        ${top3[2].id}
-                        <div class="tag-rank-badge">TOP 3</div>
-                     </div>`;
-            html += '</div>';
+            // 渲染结果标题
+            document.getElementById('resultTitle').textContent = '测试结果：' + topAttr.name;
 
-            html += '<div class="charts-container">';
-            attributes.forEach(attr => {
-                html += `<div class="chart-item">${createBar(attr.percent, attr.color)}<div class="chart-label">${attr.name}</div></div>`;
+            // 渲染金字塔
+            let pyramidHtml = '';
+            top3.forEach((tag, i) => {
+                const rank = i + 1;
+                pyramidHtml += `
+                <div class="tag-rank-item tag-rank-${rank}" data-tag-id="${tag.id}">
+                    ${tag.id}
+                    <div class="tag-rank-badge">TOP ${rank}</div>
+                    <div class="tag-rank-score">${tag.score.toFixed(1)}分</div>
+                </div>`;
             });
-            html += '</div>';
+            document.getElementById('pyramidBox').innerHTML = pyramidHtml;
 
-            resultContainer.innerHTML = html;
+            // 渲染柱状图
+            let chartsHtml = '';
+            attributes.forEach(attr => {
+                chartsHtml += `<div class="chart-item">
+                    ${createBar(attr.percent, attr.color)}
+                    <div class="chart-label">${attr.name}</div>
+                </div>`;
+            });
+            document.getElementById('chartsBox').innerHTML = chartsHtml;
 
-            // 绑定标签点击事件
+            // 绑定标签点击
             document.querySelectorAll('.tag-rank-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const tagId = item.dataset.tagId;
@@ -885,7 +1047,7 @@
                 });
             });
 
-            // 切换显示
+            // 切换页面
             quizContainer.style.display = 'none';
             document.querySelector('.nav-buttons').style.display = 'none';
             resultContainer.style.display = 'block';
@@ -904,10 +1066,8 @@
         }
 
         function calculateResult() {
-            // 检查是否有未答题
             const firstUnanswered = scores.findIndex(s => s === null);
             if (firstUnanswered !== -1) {
-                // 找到未答题在出场顺序中的位置
                 const orderIdx = shuffleOrder.indexOf(firstUnanswered);
                 jumpToUnanswered(orderIdx);
                 return;
@@ -915,22 +1075,20 @@
             showResult();
         }
 
-        // ========== 事件绑定 ==========
+        // ================================================================
+        // 【事件绑定 & 初始化】
+        // ================================================================
         prevBtn.addEventListener('click', () => {
-            if (currentIndex.value > 0) {
-                switchQuestion(-1);
-            }
+            if (currentIndex.value > 0) switchQuestion(-1);
         });
-
         nextBtn.addEventListener('click', () => {
-            if (currentIndex.value < questions.length - 1) {
+            if (currentIndex.value < TOTAL_QUESTIONS - 1) {
                 switchQuestion(1);
             } else {
                 calculateResult();
             }
         });
 
-        // ========== 初始化 ==========
         renderQuestion();
     </script>
 </body>
